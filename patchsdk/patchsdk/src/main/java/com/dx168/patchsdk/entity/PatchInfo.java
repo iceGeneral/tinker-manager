@@ -1,9 +1,9 @@
-package com.dx168.patchsdk;
+package com.dx168.patchsdk.entity;
 
 /**
  * Created by jianjun.lin on 2016/10/26.
  */
-class PatchInfo {
+public class PatchInfo {
 
     private int code;
     private String message;

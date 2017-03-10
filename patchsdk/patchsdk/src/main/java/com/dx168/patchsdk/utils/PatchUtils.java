@@ -8,7 +8,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.dx168.patchsdk.PatchInfo;
+
+import com.dx168.patchsdk.entity.PatchInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;

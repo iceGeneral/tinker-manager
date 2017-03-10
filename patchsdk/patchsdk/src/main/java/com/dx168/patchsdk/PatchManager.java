@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.dx168.patchsdk.entity.AppInfo;
+import com.dx168.patchsdk.entity.LoadedPatchInfo;
+import com.dx168.patchsdk.entity.PatchInfo;
 import com.dx168.patchsdk.utils.DebugUtils;
 import com.dx168.patchsdk.utils.DigestUtils;
 import com.dx168.patchsdk.utils.PatchUtils;
@@ -367,7 +370,7 @@ public final class PatchManager {
         return patchPath.substring(patchPath.indexOf("_") + 1, patchPath.lastIndexOf("_"));
     }
 
-    public LoadedPatch getLoadedPatch() {
+    public LoadedPatchInfo getLoadedPatchInfo() {
         final String path = SPUtils.get(context, KEY_LOADED_PATCH, "");
         if (TextUtils.isEmpty(path)) {
             return null;
@@ -376,7 +379,7 @@ public final class PatchManager {
         if (!patch.exists()) {
             return null;
         }
-        return new LoadedPatch(path, getUid(path), getHash(path), patch.length(), path);
+        return new LoadedPatchInfo(path, getUid(path), getHash(path), patch.length(), path);
     }
 
     /**
