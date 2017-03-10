@@ -1,4 +1,4 @@
-package com.dx168.patchsdk.bean;
+package com.dx168.patchsdk;
 
 import android.os.Build;
 
@@ -7,7 +7,7 @@ import com.dx168.patchsdk.BuildConfig;
 /**
  * Created by jianjun.lin on 2016/10/27.
  */
-public class AppInfo {
+class AppInfo {
 
     private String appId;
     private String appSecret;

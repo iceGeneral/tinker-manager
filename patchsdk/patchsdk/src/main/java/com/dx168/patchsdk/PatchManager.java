@@ -8,8 +8,6 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.dx168.patchsdk.bean.AppInfo;
-import com.dx168.patchsdk.bean.PatchInfo;
 import com.dx168.patchsdk.utils.DebugUtils;
 import com.dx168.patchsdk.utils.DigestUtils;
 import com.dx168.patchsdk.utils.PatchUtils;
@@ -358,11 +356,27 @@ public final class PatchManager {
     }
 
     private String getPatchName(PatchInfo.Data data) {
-        return data.getPatchVersion() + "_" + data.getUid() + ".apk";
+        return data.getPatchVersion() + "_" + data.getHash() + "_" + data.getUid() + ".apk";
     }
 
     private String getUid(String patchPath) {
         return patchPath.substring(patchPath.lastIndexOf("_") + 1, patchPath.length() - 4);
+    }
+
+    private String getHash(String patchPath) {
+        return patchPath.substring(patchPath.indexOf("_") + 1, patchPath.lastIndexOf("_"));
+    }
+
+    public LoadedPatch getLoadedPatch() {
+        final String path = SPUtils.get(context, KEY_LOADED_PATCH, "");
+        if (TextUtils.isEmpty(path)) {
+            return null;
+        }
+        File patch = new File(path);
+        if (!patch.exists()) {
+            return null;
+        }
+        return new LoadedPatch(path, getUid(path), getHash(path), patch.length(), path);
     }
 
     /**

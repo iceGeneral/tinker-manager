@@ -6,7 +6,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 
-import com.dx168.patchsdk.bean.AppInfo;
+import com.dx168.patchsdk.AppInfo;
 
 import java.io.File;
 import java.util.Random;
